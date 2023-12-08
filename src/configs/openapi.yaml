@@ -1,0 +1,1509 @@
+openapi: 3.0.0
+info:
+  title: Networkly Rest API
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:3000'
+    description: Local Server run on port 3000
+  - url: 'http://54.185.125.22:3000'
+    description: Development Server run on port 3000
+paths:
+  /v1/auth/getprovidertoken:
+    post:
+      summary: getProviderToken
+      operationId: getProviderToken
+      description: login or register that handle dynamic provider
+      tags:
+        - auth
+      parameters:
+        - $ref: '#/components/parameters/act'
+      requestBody:
+        description: authenication for general provider
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - provider_value
+              properties:
+                provider:
+                  type: string
+                  enum:
+                    - email
+                    - gmail
+                    - linkedin
+                    - phone
+                  x-enum-varnames:
+                    - emailProv
+                    - gmailProv
+                    - linkedinProv
+                    - phoneProv
+                provider_id:
+                  type: string
+                  example: '(optional) id from provider (ex: gmailID from oauth response)'
+                provider_token:
+                  type: string
+                  example: (optional) token from provider oAuth response
+                fname:
+                  type: string
+                  example: (optional) first name if exists
+                lname:
+                  type: string
+                  example: (optional) last name if exists
+                provider_value:
+                  type: string
+                  example: can be an email(email@mail.com) or phone(+62777888999)
+      responses:
+        '200':
+          description: get providers auth token request
+          headers:
+            x-next:
+              description: a string of next action
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'APP:SUCCESS | ERR:VALIDATION'
+                  stat_msg:
+                    type: string
+                    example: success
+                  pagination:
+                    type: object
+                  data:
+                    $ref: '#/components/schemas/ProviderAuthToken'
+        '400':
+          $ref: '#/components/responses/Other200Resp'
+        '403':
+          description: ../responses/other_200.yaml
+        '404':
+          description: ../responses/other_200.yaml
+        '500':
+          description: ../responses/other_200.yaml
+        default:
+          $ref: '#/components/responses/Other200Resp'
+  /v1/auth/provider-validation:
+    post:
+      summary: validateProviderToken
+      operationId: validateProviderToken
+      description: validateProviderToken
+      tags:
+        - auth
+      parameters:
+        - $ref: '#/components/parameters/xValidation'
+      requestBody:
+        description: validate provider token
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProviderAuthValidationReq'
+      responses:
+        '200':
+          description: provider token validation success
+          headers:
+            x-next:
+              description: a string of next action
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - stat_code
+                  - stat_msg
+                  - pagination
+                  - data
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'APP:SUCCESS | ERR:VALIDATION'
+                  stat_msg:
+                    type: string
+                    example: success
+                  pagination:
+                    type: object
+                  data:
+                    $ref: '#/components/schemas/PhoneAuthTokenResp'
+        '400':
+          $ref: '#/components/responses/Other200Resp'
+        '403':
+          description: ../responses/other_200.yaml
+        '404':
+          description: ../responses/other_200.yaml
+        '500':
+          description: ../responses/other_200.yaml
+        default:
+          $ref: '#/components/responses/Other200Resp'
+  /v1/auth/register:
+    post:
+      summary: register
+      operationId: register
+      description: register new user
+      tags:
+        - auth
+      requestBody:
+        description: register new user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthRegister'
+      responses:
+        '200':
+          description: register success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'APP:SUCCESS | ERR:VALIDATION'
+                  stat_msg:
+                    type: string
+                    example: success
+                  pagination:
+                    type: object
+                  data:
+                    $ref: '#/components/schemas/PhoneAuthTokenResp'
+        '400':
+          $ref: '#/components/responses/Other200Resp'
+        '403':
+          description: ../responses/other_200.yaml
+        '404':
+          description: ../responses/other_200.yaml
+        '500':
+          description: ../responses/other_200.yaml
+        default:
+          $ref: '#/components/responses/Other200Resp'
+  /v1/auth/register/total:
+    get:
+      summary: totalRegistered
+      operationId: showTotalRegistered
+      description: get total user that has been registered
+      tags:
+        - profile
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/totalRegisteredResp'
+        default:
+          $ref: '#/components/responses/Other200Resp'
+  /v1/events:
+    get:
+      summary: List
+      operationId: ListEvent
+      description: list of events
+      tags:
+        - events
+      parameters:
+        - $ref: '#/components/parameters/event_title'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/cat'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: a paged array of events
+          headers:
+            x-next:
+              description: a link to the next page response
+              schema:
+                type: string
+            x-prev:
+              description: a link to prev page response
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - stat_code
+                  - stat_msg
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  stat_msg:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EventResp'
+        '401':
+          $ref: '#/components/responses/Other401Resp'
+        '403':
+          description: forbidden
+        '404':
+          description: not found
+        '500':
+          description: internal server error
+        default:
+          $ref: '#/components/responses/Other200Resp'
+    post:
+      summary: create
+      operationId: CreateEvent
+      description: create event
+      tags:
+        - events
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: create event body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventReq'
+      responses:
+        '201':
+          description: create event success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - stat_code
+                  - stat_msg
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  stat_msg:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    type: object
+                    properties:
+                      event_code:
+                        type: string
+        '401':
+          $ref: '#/components/responses/Other401Resp'
+        '403':
+          description: forbidden
+        '404':
+          description: not found
+        '500':
+          description: internal server error
+        default:
+          $ref: '#/components/responses/Other200Resp'
+  '/v1/events/{eventCode}':
+    get:
+      summary: Detail
+      operationId: showEventByCode
+      description: detail of events
+      tags:
+        - events
+      security:
+        - {}
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/eventCode'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - stat_code
+                  - stat_msg
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  stat_msg:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    $ref: '#/components/schemas/EventRespDetail'
+        default:
+          $ref: '#/components/responses/EmptyResp'
+    put:
+      summary: edit
+      operationId: EditEvent
+      description: edit event
+      tags:
+        - events
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/eventCode'
+      requestBody:
+        description: edit event body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventReq'
+      responses:
+        '200':
+          $ref: '#/components/responses/Other200Resp'
+        default:
+          $ref: '#/components/responses/Other200Resp'
+  '/v1/events/{eventCode}/setting':
+    put:
+      summary: edit event Setting
+      operationId: EditEventSetting
+      description: edit event setting
+      tags:
+        - events
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/eventCode'
+      requestBody:
+        description: edit event body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventSettingReq'
+      responses:
+        '200':
+          $ref: '#/components/responses/Other200Resp'
+        default:
+          $ref: '#/components/responses/Other200Resp'
+  '/v1/events/{eventCode}/status':
+    put:
+      summary: event status
+      operationId: EditEventStatus
+      description: 'event publish, un-publish'
+      tags:
+        - events
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/eventCode'
+      requestBody:
+        description: edit event to publish unpublish
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - status
+              properties:
+                status:
+                  type: integer
+                  format: int32
+                  example: '0=draft, 1=hosting, 2=canceled'
+                message:
+                  type: string
+                  example: it's optional. only required when status=2 (canceled).
+      responses:
+        '200':
+          $ref: '#/components/responses/Other200Resp'
+        default:
+          $ref: '#/components/responses/Other200Resp'
+  '/v1/events/{eventCode}/questionnaires':
+    put:
+      summary: answer questionnaires
+      operationId: AnswerQuestionnaires
+      description: answer the questionaires
+      tags:
+        - events
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/eventCode'
+      requestBody:
+        description: event question answer
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttendanceAnswerReq'
+      responses:
+        '200':
+          $ref: '#/components/responses/Other200Resp'
+        default:
+          $ref: '#/components/responses/Other200Resp'
+  '/v1/events/{eventCode}/attendances':
+    get:
+      summary: list of attendances
+      operationId: EventAttendanceList
+      description: list of event attendances
+      tags:
+        - events
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/eventCode'
+      responses:
+        '200':
+          description: a paged array of event attendances
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  stat_msg:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EventAttendanceResp'
+  '/v1/events/{eventCode}/invitations':
+    get:
+      summary: List of event invitations and user contacts
+      operationId: InvitationList
+      description: List of event invitations and user contacts
+      tags:
+        - events
+      parameters:
+        - $ref: '#/components/parameters/eventCode'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: a paged array of events invitations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  stat_msg:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    $ref: '#/components/schemas/EventInvited'
+        '401':
+          $ref: '#/components/responses/Other401Resp'
+        '403':
+          description: forbidden
+        '404':
+          description: not found
+        '500':
+          description: internal server error
+        default:
+          $ref: '#/components/responses/Other200Resp'
+    post:
+      summary: Invite from contact
+      operationId: EventInvite
+      description: invite contact
+      tags:
+        - events
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/eventCode'
+      requestBody:
+        description: invitation request
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+                profile_ids:
+                  type: array
+                  items:
+                    type: integer
+                  example:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+      responses:
+        '200':
+          description: create event success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  stat_msg:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    type: object
+        '401':
+          $ref: '#/components/responses/Other401Resp'
+        '403':
+          description: forbidden
+        '404':
+          description: not found
+        '500':
+          description: internal server error
+        default:
+          $ref: '#/components/responses/Other200Resp'
+  /v1/file/upload:
+    post:
+      summary: upload
+      operationId: UploadFile
+      description: upload file
+      tags:
+        - upload
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: upload image file
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                img_file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: upload image
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - stat_code
+                  - stat_msg
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  stat_msg:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    type: object
+                    properties:
+                      file_path:
+                        type: string
+                      file_url:
+                        type: string
+        '401':
+          $ref: '#/components/responses/Other401Resp'
+        '403':
+          description: forbidden
+        '404':
+          description: not found
+        '500':
+          description: internal server error
+        default:
+          $ref: '#/components/responses/Other200Resp'
+  /v1/app/settings:
+    get:
+      summary: AppSetting
+      operationId: getAppSetting
+      description: get application general settings
+      tags:
+        - app
+      security:
+        - {}
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/group'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  stat_msg:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    type: object
+        default:
+          $ref: '#/components/responses/EmptyResp'
+  /v1/app/notification/priority:
+    get:
+      summary: notification priority
+      operationId: noficationPriority
+      description: provide priority provider to send notification (email/phone)
+      tags:
+        - notification
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationPriorityResp'
+        default:
+          $ref: '#/components/responses/Other200Resp'
+  /v1/me:
+    get:
+      summary: get profile
+      operationId: getProfile
+      description: get profile by JWT token
+      tags:
+        - profile
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - stat_code
+                  - stat_msg
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  stat_msg:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    $ref: '#/components/schemas/ProfileResp'
+        default:
+          $ref: '#/components/responses/EmptyResp'
+  /v1/me/contacts:
+    get:
+      summary: Contact List
+      operationId: myContactList
+      description: list of contacts of mine
+      tags:
+        - events
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  stat_msg:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ContactResp'
+        default:
+          $ref: '#/components/responses/EmptyResp'
+  '/v1/profiles/{intID}':
+    get:
+      summary: get profile by ID
+      operationId: getProfileByID
+      description: get profile by ID
+      tags:
+        - profile
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/intID'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  stat_msg:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    $ref: '#/components/schemas/ProfileResp'
+        default:
+          $ref: '#/components/responses/EmptyResp'
+  '/v1/profiles/{intID}/histories':
+    get:
+      summary: profile histories
+      operationId: profileHistories
+      description: detail of profile histories
+      tags:
+        - profile
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/intID'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  stat_msg:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProfileHistory'
+        default:
+          $ref: '#/components/responses/EmptyResp'
+  /v1/categories:
+    get:
+      summary: profileCategoryList
+      operationId: profileCategoryList
+      description: list of profile categories
+      tags:
+        - profileCategory
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: a paged array of profile categories
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - stat_code
+                  - stat_msg
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  stat_msg:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProfileCategoryResp'
+    post:
+      summary: addProfileCategory
+      operationId: addProfileCategory
+      description: add new profile category
+      tags:
+        - auth
+      requestBody:
+        description: add new category
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileCategoryReq'
+      responses:
+        '200':
+          description: add new success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'APP:SUCCESS | ERR:VALIDATION'
+                  stat_msg:
+                    type: string
+                    example: success
+                  pagination:
+                    type: object
+                  data:
+                    type: object
+        '400':
+          $ref: '#/components/responses/Other200Resp'
+        '403':
+          description: ../responses/other_200.yaml
+        '404':
+          description: ../responses/other_200.yaml
+        '500':
+          description: ../responses/other_200.yaml
+        default:
+          $ref: '#/components/responses/Other200Resp'
+components:
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: how many items to return at one time (max 100)
+      required: true
+      schema:
+        type: integer
+        format: int32
+    page:
+      name: page
+      in: query
+      description: the current page of items (for pagination)
+      required: true
+      schema:
+        type: integer
+        format: int32
+    act:
+      name: act
+      in: query
+      description: query string for action process
+      required: false
+      schema:
+        type: string
+    event_title:
+      name: event_title
+      in: query
+      description: filter for event title
+      required: false
+      schema:
+        type: string
+    group:
+      name: group
+      in: query
+      description: query string for filter by group name
+      required: false
+      schema:
+        type: string
+    cat:
+      name: cat
+      in: query
+      description: query string for filter by cat
+      required: false
+      schema:
+        type: string
+    eventCode:
+      name: eventCode
+      in: path
+      required: true
+      description: the code of event to retrieve
+      schema:
+        type: string
+    intID:
+      name: intID
+      in: path
+      required: true
+      description: the id of rosources data
+      schema:
+        type: integer
+    xValidation:
+      name: X-Validation
+      in: header
+      description: a custom header for custom token
+      required: false
+      schema:
+        type: string
+  schemas:
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    Other200:
+      type: object
+      required:
+        - stat_code
+        - stat_msg
+        - pagination
+        - data
+      properties:
+        stat_code:
+          type: string
+          example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+        stat_msg:
+          type: string
+          example: can be a custom message
+        data:
+          type: object
+    Other401:
+      type: object
+      required:
+        - stat_code
+        - stat_msg
+        - pagination
+        - data
+      properties:
+        stat_code:
+          type: string
+          example: 'ERR:AUTHORIZATION'
+        stat_msg:
+          type: string
+          example: Access token is missing or invalid
+        data:
+          type: object
+    EventReq:
+      type: object
+      required:
+        - title
+        - description
+        - location
+        - start_date
+        - end_date
+        - background_name
+        - effect_name
+      properties:
+        title:
+          type: string
+          example: Awesome Event
+        poster_img:
+          type: string
+          example: can be a link or path of uploaded image
+        description:
+          type: string
+          example: Description of the event.
+        location:
+          type: string
+          example: 'Overseas Highway, Florida'
+        map_link:
+          type: string
+          example: 'https://maps.google.com/xxx'
+        addr_name:
+          type: string
+          example: 'Overseas Highway, Florida'
+        addr_detail:
+          type: string
+          example: Jl. Florida xxxx
+        addr_lng:
+          type: string
+          example: longitude
+        addr_ltd:
+          type: string
+          example: lotitude
+        addr_note:
+          type: string
+          example: address notes
+        max_spot:
+          type: integer
+          format: int32
+        additional_msg:
+          type: string
+        start_date:
+          type: string
+          example: 'year-month-data hh:mm:ss'
+        end_date:
+          type: string
+          example: 'year-month-data hh:mm:ss'
+        tz_name:
+          type: string
+          example: Asia/Jakarta
+        tz_offset:
+          type: integer
+          example: signed integer
+        background_name:
+          type: string
+          example: the name of background for this event
+        effect_name:
+          type: string
+          example: the name of effect for this event
+    EventResp:
+      type: object
+      properties:
+        event_code:
+          type: string
+          example: EV-001
+        title:
+          type: string
+          example: Awesome Event
+        creator_name:
+          type: string
+          example: the name of creator (host)
+        poster_img:
+          type: string
+          example: the link of image
+        event_status:
+          type: integer
+          format: int32
+          example: '0=draft, 1=hosting, 2=canceled'
+        start_date:
+          type: string
+          example: 'year-month-data hh:mm:ss'
+        end_date:
+          type: string
+          example: 'year-month-data hh:mm:ss'
+        tz_name:
+          type: string
+        tz_offset:
+          type: integer
+        is_expired:
+          type: boolean
+    EventRespDetail:
+      type: object
+      properties:
+        event_code:
+          type: string
+          example: EV-001
+        title:
+          type: string
+          example: Awesome Event
+        poster_img:
+          type: string
+          example: can be a link or path of uploaded image
+        description:
+          type: string
+          example: Description of the event.
+        location:
+          type: string
+          example: 'Overseas Highway, Florida'
+        map_link:
+          type: string
+          example: 'https://maps.google.com/xxx'
+        addr_name:
+          type: string
+          example: 'Overseas Highway, Florida'
+        addr_detail:
+          type: string
+          example: Jl. Florida xxxx
+        addr_lng:
+          type: string
+          example: longitude
+        addr_ltd:
+          type: string
+          example: lotitude
+        addr_note:
+          type: string
+          example: address notes
+        max_spot:
+          type: integer
+          format: int32
+        additional_msg:
+          type: string
+        start_date:
+          type: string
+        end_date:
+          type: string
+        tz_name:
+          type: string
+          example: Asia/Jakarta
+        tz_offset:
+          type: integer
+          example: signed integer
+        set_host:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              role:
+                type: string
+        set_rsvp:
+          $ref: '#/components/schemas/EventSetRSVP'
+        is_questionnaire_active:
+          type: boolean
+        set_questionnaire:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventSetQuestion'
+        set_display_privacy:
+          type: object
+          properties:
+            show_guest_list:
+              type: boolean
+            show_guest_count:
+              type: boolean
+            show_timestampt:
+              type: boolean
+            allow_guest_add_photo:
+              type: boolean
+            show_share_button:
+              type: boolean
+        set_reminder:
+          type: boolean
+        creator_name:
+          type: string
+        background_name:
+          type: string
+          example: the name of background for this event
+        effect_name:
+          type: string
+          example: the name of effect for this event
+        event_status:
+          type: integer
+          format: int32
+          example: '0=draft, 1=hosting, 2=canceled, 3=expired'
+        is_host:
+          type: boolean
+        attendance_count:
+          type: integer
+        attendance_status:
+          type: integer
+        is_expired:
+          type: boolean
+    EventSettingReq:
+      type: object
+      required:
+        - is_questionnaire_active
+      properties:
+        is_questionnaire_active:
+          type: boolean
+        rsvp:
+          $ref: '#/components/schemas/EventSetRSVP'
+        questionnaire:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventSetQuestion'
+        reminder:
+          type: boolean
+    EventSetRSVP:
+      type: object
+      required:
+        - accept_rsvp
+        - max_capacity
+      properties:
+        accept_rsvp:
+          type: boolean
+        max_capacity:
+          type: integer
+          format: int32
+    EventSetQuestion:
+      type: object
+      required:
+        - input_type
+        - input_description
+        - is_required
+        - is_active
+      properties:
+        is_default:
+          type: boolean
+        input_type:
+          type: string
+        input_description:
+          type: string
+        is_required:
+          type: boolean
+        is_active:
+          type: boolean
+        answer_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnswerList'
+    AuthPhoneReq:
+      type: object
+      required:
+        - phone
+      properties:
+        phone:
+          type: string
+          example: '+11234567890'
+    AuthPhoneTokenReq:
+      type: object
+      required:
+        - token
+      properties:
+        token:
+          type: string
+          example: '123456'
+    AuthRegister:
+      type: object
+      required:
+        - fname
+        - lname
+        - email
+        - phone
+        - provider
+      properties:
+        fname:
+          type: string
+          example: John
+        lname:
+          type: string
+          example: Doe
+        email:
+          type: string
+          example: john.doe@email.com
+        phone:
+          type: string
+          example: '+62888999888'
+        utm_source:
+          type: string
+        utm_medium:
+          type: string
+        utm_campaign:
+          type: string
+        utm_term:
+          type: string
+        utm_content:
+          type: string
+        event_code:
+          type: string
+        provider:
+          type: string
+    PhoneAuthTokenResp:
+      type: object
+      required:
+        - token
+      properties:
+        token:
+          type: string
+        fname:
+          type: string
+        lname:
+          type: string
+        is_host:
+          type: boolean
+    totalRegisteredResp:
+      type: object
+      required:
+        - stat_code
+        - stat_msg
+        - pagination
+        - data
+      properties:
+        stat_code:
+          type: string
+          example: 'APP:SUCCESS | ERR:BAD_REQUEST'
+        stat_msg:
+          type: string
+          example: success
+        pagination:
+          type: object
+        data:
+          type: object
+          required:
+            - total
+          properties:
+            total:
+              type: integer
+              format: int32
+              example: 10000
+    ProfileResp:
+      type: object
+      required:
+        - fname
+        - lname
+        - email
+      properties:
+        fname:
+          type: string
+        lname:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        is_host:
+          type: boolean
+        can_login:
+          type: boolean
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProfileCategoryResp'
+    AttendanceAnswerReq:
+      type: object
+      required:
+        - attendance_status
+      properties:
+        attendance_status:
+          type: integer
+        questionnaires:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuestionAnswerReq'
+    QuestionAnswerReq:
+      type: object
+      required:
+        - question
+        - answer
+      properties:
+        question:
+          type: string
+        answer:
+          type: string
+    AnswerList:
+      type: object
+      properties:
+        answer:
+          type: string
+        is_active:
+          type: boolean
+    EventAttendanceResp:
+      type: object
+      properties:
+        profile_id:
+          type: integer
+        fname:
+          type: string
+        lname:
+          type: string
+        phone:
+          type: string
+        attendance_status:
+          type: integer
+        email:
+          type: string
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProfileCategoryResp'
+    ContactResp:
+      type: object
+      properties:
+        profile_id:
+          type: integer
+        fname:
+          type: string
+        lname:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        created_at:
+          type: string
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProfileCategoryResp'
+    EventInvited:
+      type: object
+      properties:
+        invited:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactResp'
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactResp'
+    ProfileHistory:
+      type: object
+      properties:
+        event_code:
+          type: string
+          example: EV-001
+        title:
+          type: string
+          example: Awesome Event
+        attendance_status:
+          type: integer
+        poster_img:
+          type: string
+          example: the link of image
+        event_status:
+          type: integer
+          example: '0=draft, 1=hosting, 2=canceled'
+        start_date:
+          type: string
+          example: 'year-month-data hh:mm:ss'
+        end_date:
+          type: string
+          example: 'year-month-data hh:mm:ss'
+        tz_name:
+          type: string
+        tz_offset:
+          type: integer
+        questionnaire_answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuestionAnswerReq'
+    ProviderAuthToken:
+      type: object
+      required:
+        - token
+      properties:
+        token:
+          type: string
+        fname:
+          type: string
+        lname:
+          type: string
+        is_host:
+          type: boolean
+    ProviderAuthValidationReq:
+      type: object
+      required:
+        - token
+      properties:
+        provider:
+          type: string
+          example: 'email, gmail, linkedin, phone'
+        token:
+          type: string
+          example: '123456'
+    NotificationPriorityResp:
+      type: object
+      required:
+        - stat_code
+        - stat_msg
+        - pagination
+        - data
+      properties:
+        stat_code:
+          type: string
+          example: 'APP:SUCCESS | ERR:BAD_REQUEST'
+        stat_msg:
+          type: string
+          example: success
+        pagination:
+          type: object
+        data:
+          type: object
+          required:
+            - priority
+          properties:
+            priority:
+              type: string
+              example: email/phone
+    ProfileCategoryReq:
+      type: object
+      required:
+        - cat_name
+      properties:
+        cat_name:
+          type: string
+          example: 'manager, owner, ventures'
+    ProfileCategoryResp:
+      type: object
+      properties:
+        id:
+          type: integer
+        cat_name:
+          type: string
+        is_default:
+          type: boolean
+        is_active:
+          type: boolean
+  responses:
+    UnexpectedErrResp:
+      description: unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    EmptyResp:
+      description: empty response
+    Other200Resp:
+      description: other than 200
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Other200'
+    Other401Resp:
+      description: authorization error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Other401'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

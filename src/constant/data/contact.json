@@ -1,0 +1,15 @@
+{
+	"title": "Say Hi!",
+	"list": [
+		{
+			"name": "Email",
+			"value": "hello@networky.co",
+			"href": "mailto:hello@networky.co"
+		}
+	],
+	"backdrop": {
+		"left": "/images/contact/backdrop_left.png",
+		"right": "/images/contact/backdrop_right.png",
+		"bottom": "/images/contact/backdrop_bottom.png"
+	}
+}

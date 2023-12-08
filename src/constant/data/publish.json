@@ -1,0 +1,26 @@
+{
+	"published": {
+		"title": "Great, your event is live!",
+		"link": {
+			"image": "/images/emoji/link.png",
+			"text": "Share event link"
+		},
+		"btnAction": "Invite Guests"
+	},
+	"invitationSent": {
+		"title": "Your guests received invites.",
+		"desc": "Your guests received event invites with RSVP link via SMS",
+		"btnAction": "View My Event"
+	},
+	"share": {
+		"title": "Share Event?",
+		"desc": "You don't have any contacts yet",
+		"linkImage": "/images/emoji/link.png",
+		"info": {
+			"image": "/images/emoji/information.png",
+			"text": "Automatically invite contacts after you host your first event."
+		},
+		"shareCopyLink": "Share by event link instead",
+		"viewEvent": "View My Event"
+	}
+}

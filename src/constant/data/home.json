@@ -1,0 +1,372 @@
+{
+	"hero": {
+		"title": "Host Fruitful Meetups",
+		"tagline": "Create a simple event page,<span class='lg-hidden'><br /></span> invite guests and manage<span class='lg-hidden'><br /></span> a guestlist in 1-click",
+		"desc": "",
+		"image": {
+			"web": "/videos/home/hero.gif",
+			"mobile": "/videos/home/hero.gif"
+		},
+		"video": {
+			"web": "",
+			"mobile": "",
+			"type": ""
+		},
+		"features": [],
+		"ctaButton": {
+			"text": "Create Your First Meetup!",
+			"href": "/create"
+		},
+		"ctaSignIn": {
+			"preText": "Already have an account?",
+			"textAction": "Log in",
+			"href": "/auth"
+		}
+	},
+	"runningKeywords": [
+		{
+			"icon": "circle",
+			"text": "VC Dinner Party",
+			"color": "#5218FF"
+		},
+		{
+			"icon": "blink",
+			"text": "Web3",
+			"color": "#FF4600"
+		},
+		{
+			"icon": "circle",
+			"text": "Launch Event",
+			"color": "#00CB77"
+		},
+		{
+			"icon": "square",
+			"text": "Blockchain Hackathon",
+			"color": "#FFB300"
+		},
+		{
+			"icon": "star",
+			"text": "Founder Meetup",
+			"color": "#5218FF"
+		},
+		{
+			"icon": "diamond",
+			"text": "Happy Hour",
+			"color": "#FF4600"
+		},
+		{
+			"icon": "square",
+			"text": "Gaming Conference",
+			"color": "#C972FF"
+		},
+		{
+			"icon": "star",
+			"text": "Web3 Rooftop Party",
+			"color": "#FFB300"
+		},
+		{
+			"icon": "circle",
+			"text": "Meetup",
+			"color": "#00CB77"
+		},
+		{
+			"icon": "blink",
+			"text": "Hackathon",
+			"color": "#FF4600"
+		},
+		{
+			"icon": "circle",
+			"text": "Networking",
+			"color": "#5218FF"
+		},
+		{
+			"icon": "square",
+			"text": "Career Day",
+			"color": "#FFB300"
+		},
+		{
+			"icon": "star",
+			"text": "Demo Day",
+			"color": "#FF4600"
+		},
+		{
+			"icon": "diamond",
+			"text": "Launch Party",
+			"color": "#C972FF"
+		},
+		{
+			"icon": "square",
+			"text": "Fireside Chat",
+			"color": "#00CB77"
+		},
+		{
+			"icon": "star",
+			"text": "Breakfast Meetup",
+			"color": "#FFB300"
+		},
+		{
+			"icon": "circle",
+			"text": "Web2",
+			"color": "#C972FF"
+		},
+		{
+			"icon": "blink",
+			"text": "Technology",
+			"color": "#FFB300"
+		},
+		{
+			"icon": "square",
+			"text": "Networking Drinks",
+			"color": "#00CB77"
+		}
+	],
+	"event": {
+		"title": "Create event<span class='sm-hidden'>s<br /></span><span class='max-sm-hidden'> pages</span> in minutes",
+		"coverOption": {
+			"list": [
+				{
+					"title": "VC Dinner Party",
+					"image": "/images/home/event/event_1.png"
+				},
+				{
+					"title": "Web3 Club",
+					"image": "/images/home/event/event_2.png"
+				},
+				{
+					"title": "NFT Launch",
+					"image": "/images/home/event/event_5.png"
+				},
+				{ "title": "Hackathon Meetup",
+					"image": "/images/home/event/event_4.png"
+				},
+				{ "title": "Happy Hour",
+					"image": "/images/home/event/event_3.png"
+				},
+				{ "title": "StartUp Club",
+					"image": "/images/home/event/event_6.png"
+				},
+				{ "title": "Business Networking",
+					"image": "/images/home/event/event_7.png"
+				},
+				{ "title": "Investor Meetup",
+					"image": "/images/home/event/event_8.png"
+				}
+			],
+			"ctaMore": {
+				"text": "( See more event cover options )",
+				"href": "/auth"
+			}
+		},
+		"createEvent": {
+			"previewEventImage": "/images/home/event/detail_event.png",
+			"data": {
+				"title": "Founder & Investor Mixer",
+				"host": "Jonathan Doe",
+				"cover": "/images/home/event/event_3.png",
+				"date": "Thursday, Aug 15",
+				"time": "6:00 AM to 9:00 PM - UTC",
+				"location": "3395 James Martin Circle",
+				"seats": "20 seats"
+			},
+			"steps": [
+				{
+					"title": "Select cover picture or upload your own",
+					"data": []
+				},
+				{
+					"id": "background",
+					"badge": "TRY IT!",
+					"title": "Select background",
+					"indexDefaultSelect": 1,
+					"data": [
+						{
+							"thumbnail": "/images/backgrounds/background_1.png",
+							"video": "/videos/backgrounds/gradient_1.mp4"
+						},
+						{
+							"thumbnail": "/images/backgrounds/background_2.png",
+							"video": "/videos/backgrounds/gradient_4.mp4"
+						},
+						{
+							"thumbnail": "/images/backgrounds/background_3.png",
+							"video": "/videos/backgrounds/gradient_3.mp4"
+						},
+						{
+							"thumbnail": "/images/backgrounds/background_4.png",
+							"video": "/videos/backgrounds/gradient_5.mp4"
+						}
+					],
+					"dataType": "thumbnail-video"
+				},
+				{
+					"id": "effect",
+					"badge": "TRY IT!",
+					"title": "Select effect",
+					"dataType": "thumbnail-video",
+					"indexDefaultSelect": 3,
+					"data": [
+						{
+							"thumbnail": "/images/effects/thumbnail_sparkling.png",
+							"video": "/videos/effects/starry.gif"
+						},
+						{
+							"thumbnail": "/images/effects/thumbnail_path.png",
+							"video": "/videos/effects/lines_1.gif"
+						},
+						{
+							"thumbnail": "/images/effects/thumbnail_rocket.png",
+							"video": "/videos/effects/rocket.gif"
+						},
+						{
+							"thumbnail": "/images/effects/thumbnail_money.png",
+							"video": "/videos/effects/money.gif"
+						}
+					]
+				}
+			],
+			"ctaMore": {
+				"title": "Browse more effects",
+				"href": "/auth"
+			}
+		}
+	},
+	"optionalFeatures": {
+		"title": "Add optional features",
+		"list": [
+			{
+				"title": "Enable<span class='max-md-hidden'><br /></span> Waitlist",
+				"desc": "Easily set up an event waitlist and pre-vet all attendees.",
+				"image": "/images/home/event/memo.png"
+			},
+			{
+				"title": "Password<span class='max-md-hidden'><br /></span> Protected",
+				"desc": "Only guests with a password can access your event page.",
+				"image": "/images/home/event/key.png"
+			},
+			{
+				"title": "Guest<span class='max-md-hidden'><br /></span> Questionnaire",
+				"desc": "Ask your guests questions as part of an event RSVP process.",
+				"image": "/images/home/event/eyes.png"
+			}
+		],
+		"ctaButton": {
+			"text": "Create Your First Meetup",
+			"href": "/auth"
+		}
+	},
+	"manageGuest": {
+		"title": "Manage your<span class='sm-hidden'><br /></span> guestlist easily",
+		"list": [
+			{
+				"title": "Share<span class='max-md-hidden'><br /></span> invite link",
+				"desc": "Generate and share event link",
+				"image": "/images/home/event/manage_step_1.png",
+				"bulletColor": "#FF4600",
+				"aspectRatio": "183/201"
+			},
+			{
+				"title": "Invite guests<span class='md-hidden'><br /></span> from<span class='max-md-hidden'><br /></span> your Contacts",
+				"desc": "Invite guests in 1-click from your Contacts",
+				"image": "/images/home/event/manage_step_2.png",
+				"bulletColor": "#FF4600",
+				"aspectRatio": "183/252"
+			},
+			{
+				"title": "Track RSVPs",
+				"desc": "Get RSVPs and track who is coming",
+				"image": "/images/home/event/manage_step_3.png",
+				"bulletColor": "#FF4600",
+				"aspectRatio": "183/216"
+			},
+			{
+				"title": "Send automatic<span class='max-md-hidden'><br /></span> reminders",
+				"desc": "Add the event to a guest's calendar and send automatic reminders",
+				"image": "/images/home/event/manage_step_4.png",
+				"bulletColor": "#FF4600",
+				"aspectRatio": "185/216"
+			},
+			{
+				"title": "Track<span class='max-md-hidden'><br /></span> who attended",
+				"desc": "Generate a QR code for a guest to scan at the event",
+				"image": "/images/home/event/manage_step_5.png",
+				"bulletColor": "#FF4600",
+				"aspectRatio": "185/213.408"
+			}
+		],
+		"ctaButton": {
+			"text": "Create Your First Meetup",
+			"href": "/auth"
+		}
+	},
+	"features": {
+		"list": [
+			{
+				"id": "feature-1",
+				"icon": "",
+				"iconMobile": "",
+				"title": "Easily create<br />event pages",
+				"desc": "Create event pages in minutes then share with your guests.",
+				"image": "/images/home/features/features_event.png",
+				"imageMobile": "/images/home/features/features_event.png"
+			},
+			{
+				"id": "feature-2",
+				"icon": "",
+				"iconMobile": "",
+				"title": "Auto-add<br />to your Contacts",
+				"desc": "New contacts who register on your event page and unregistered guests who you meet at your event are automatically added to your Contacts.",
+				"image": "/images/home/features/features_crm.png",
+				"imageMobile": "/images/home/features/features_crm.png"
+			},
+			{
+				"id": "feature-3",
+				"icon": "",
+				"iconMobile": "",
+				"title": "Automated<br />follow-ups",
+				"desc": "Never miss developing a contact into a relationship with automatic follow-ups generated by Artificial Intelligence.",
+				"image": "/images/home/features/features_automation.png",
+				"imageMobile": "/images/home/features/features_automation.png"
+			}
+		],
+		"ctaButton": {
+			"text": "Try it for Free",
+			"href": "/auth"
+		}
+	},
+	"crm": {
+		"title": "My Contacts",
+		"subtitle": "Sync all guest<br />info into<br />your Contacts",
+		"desc": "<ul style='margin-left:16px;padding-left:20px;padding-right:80px;'><li>Grow your personal contact list</li><li>Collect guest info with guest questionnaires (emails, company, LinkedIn, etc)</li><li>Add categories, tags, filters, notes, etc</li></ul>",
+		"image": {
+			"web": "/images/home/crm/main_web.png",
+			"mobile": "/images/home/crm/main_mobile.png"
+		}
+	},
+	"automation": {
+		"title": "Automation",
+		"subtitle": "Send automatic<br />follow-ups",
+		"desc": "Never forget to send a follow-up message with reminders and automatic follow-ups.",
+		"image": {
+			"web": "/images/home/automation/main_web.png",
+			"mobile": "/images/home/automation/main_mobile.png"
+		},
+		"ctaButton": {
+			"text": "Create Your First Meetup",
+			"href": "/auth"
+		}
+	},
+	"social": {
+		"title": "All your contacts in one place",
+		"desc": "Sync your contacts across all social platforms into one place.",
+		"image": "/images/home/social/main.png",
+		"ctaButton": {
+			"text": "Let’s Get Social!",
+			"href": "/auth"
+		},
+		"ctaBottom": {
+			"title": "Ready to get social?",
+			"textAction": "Create Your First Event",
+			"href": "/auth"
+		}
+	}
+}

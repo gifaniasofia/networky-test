@@ -1,0 +1,21 @@
+{
+	"default": {
+		"title": "Cancel Event?",
+		"warning": {
+			"image": "",
+			"text": "Are you sure you want to cancel this event?",
+			"desc": "This action can’t be undone."
+		},
+		"btnText": "Cancel Event"
+	},
+	"withRSVP": {
+		"title": "Cancel this Event?",
+		"warning": {
+			"image": "",
+			"text": "Are you sure you want to cancel this event?",
+			"desc": "This action can’t be undone."
+		},
+		"btnText": "Cancel & Notify",
+		"info": "We'll notify your guests via Email or SMS."
+	}
+}

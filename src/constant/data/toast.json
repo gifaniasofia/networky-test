@@ -1,0 +1,4 @@
+{
+	"errorDefault": "<span style='color: #BB0B00;'>Sorry</span>, it seems something wrong has happened. Please try again in a few minutes.",
+	"errorIcon": "/images/emoji/emoji_error.png"
+}

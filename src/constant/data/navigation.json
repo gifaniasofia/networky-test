@@ -1,0 +1,100 @@
+{
+	"menu": [
+		{ "name": "Home", "href": "/", "showInNavbar": true },
+		{ "name": "About", "href": "https://sygnalxyz.notion.site/About-Networky-0f868460e60b41d1b82828b6dc7af713", "showInNavbar": true },
+		{ "name": "FAQ", "href": "https://sygnalxyz.notion.site/Networky-FAQ-fd4790bd129642b4b6aab21263005a5b", "showInNavbar": true },
+		{ "name": "Careers", "href": "https://sygnalxyz.notion.site/Networky-Careers-ff2fad770c5d41628fcbe18d3c2c369a", "showInNavbar": true },
+		{ "name": "Privacy", "href": "/privacy", "showInNavbar": false },
+		{ "name": "Terms", "href": "/terms", "showInNavbar": false },
+		{ "name": "Contact Us", "href": "/contact", "showInNavbar": false }
+	],
+	"menuWebApp": [
+		{ "name": "Privacy", "href": "/privacy" },
+		{ "name": "Terms", "href": "/terms" },
+		{ "name": "Careers", "href": "https://sygnalxyz.notion.site/Networky-Careers-ff2fad770c5d41628fcbe18d3c2c369a" },
+		{ "name": "Contact Us", "href": "/contact" }
+	],
+	"menuWebAppAuth": [
+		{
+			"id": "events",
+			"name": "Events",
+			"icon": "events",
+			"href": "/events"
+		},
+		{
+			"id": "contact",
+			"name": "My Contacts",
+			"icon": "group_people",
+			"href": "/mutuals"
+		}
+	],
+	"menuProfile": [
+		{ "id": "profile", "name": "See your profile" },
+		{ "id": "logout", "icon": "logout", "name": "Log out" }
+	],
+	"menuButtonCreateEvent": {
+		"text": "Create",
+		"href": "/create"
+	},
+	"authMenu": [
+		{
+			"id": "login",
+			"name": "Log In",
+			"href": "/auth"
+		},
+		{
+			"id": "create-event",
+			"name": "Sign Up",
+			"href": "/create"
+		}
+	],
+	"logoNetworkyFull": {
+		"white": "/images/logo/networky_full_white.png",
+		"black": "/images/logo/networky_full_black.png"
+	},
+	"logoNetworkyIcon": {
+		"white": "/images/logo/networky_icon_white.png",
+		"black": "/images/logo/networky_icon_black.png"
+	},
+	"poweredBy": {
+		"text": "Powered by",
+		"logo": "/images/logo/sygnalxyz.png",
+		"href": "https://www.thesygnal.xyz/"
+	},
+	"copyRight": "2023 Networky",
+	"socialMedia": {
+		"title": "Connect with us",
+		"list": [
+			{
+				"alt": "twitter",
+				"url": "https://twitter.com/networkyai",
+				"image": "/images/social_media/twitter_x.png",
+				"width": 15,
+				"height": 15,
+				"class": "p-1 sm:p-1.5"
+			},
+			{
+				"alt": "linkedin",
+				"url":  "https://www.linkedin.com/company/networky-ai/",
+				"image": "/images/social_media/linkedin.png",
+				"width": 15,
+				"height": 15,
+				"class": "p-1 sm:p-1.5"
+			},
+			{
+				"alt": "medium",
+				"url":  "https://medium.com/@networky",
+				"image": "/images/social_media/medium.png",
+				"width": 20,
+				"height": 11,
+				"class": "p-1"
+			}
+		]
+	},
+	"ctaBottom": {
+		"title": "Ready to get social?",
+		"textAction": "Create Your First Event",
+		"href": "/create"
+	},
+	"notesRegister": "By registering to this event, the host will receive your contact information such as your name, email and phone number."
+}

@@ -1,0 +1,80 @@
+{
+	"saveDraft": "Save Draft",
+	"saveChanges": "Save Changes",
+	"rsvp": {
+		"title": "RSVP",
+		"options": [
+			{
+				"id": "1",
+				"image": "/images/emoji/smiling_heart_face.png",
+				"text": "I'm Going"
+			},
+			{
+				"id": "2",
+				"image": "/images/emoji/thinking_face.png",
+				"text": "Maybe"
+			},
+			{
+				"id": "0",
+				"image": "/images/emoji/downcast_face.png",
+				"text": "Can't Go"
+			}
+		]
+	},
+	"formProps": [
+		{
+			"id": "title",
+			"placeholder": "Your Event Name",
+			"type": "text"
+		},
+		{
+			"id": "datetime",
+			"placeholder": "Select Date & Time",
+			"type": "datetime"
+		},
+		{
+			"id": "location",
+			"placeholder": "Add Event Location",
+			"type": "text"
+		},
+		{
+			"id": "addr_note",
+			"placeholder": "Add specific instruction",
+			"type": "text"
+		},
+		{
+			"id": "description",
+			"placeholder": "Add event description",
+			"type": "editor"
+		}
+	],
+	"uploadCoverProps": {
+		"id": "poster_img",
+		"type": "file"
+	},
+	"generalSettings": {
+		"options": [
+			{
+				"id": "effect",
+				"name": "Effect"
+			},
+			{
+				"id": "settings",
+				"name": "Settings"
+			},
+			{
+				"id": "preview",
+				"name": "Preview"
+			}
+		]
+	},
+	"defaultEffect": {
+		"name": "starry",
+		"source_type": "gif",
+		"source_url": "/videos/effects/starry.gif",
+		"source_thumbnail": "/images/effects/thumbnail_sparkling.png"
+	},
+	"publishEvent": "Publish Event",
+	"defaultCover": "/images/create/default_cover.png",
+	"notesRegister": "By registering to this event, the host will receive your contact information such as your name, email and phone number."
+}

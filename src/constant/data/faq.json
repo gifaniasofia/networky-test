@@ -1,0 +1,135 @@
+{
+	"title": "Here’s how this works",
+	"list": [
+		{
+			"name": "About Networky",
+			"image": "/images/emoji/waving_hand.png",
+			"data": [
+				{
+					"question": "Who is Networky for?",
+					"answer": "If you’re sick of Facebook Events, awkward group chats, and screenshotted flyers, Networky is perfect for you. Create your party page in seconds, with tons of customization options, a photo roll, and endless GIFs and memes to make your party memorable."
+				},
+				{
+					"question": "Why use Networky?",
+					"answer": "Networky streamlines the process of planning and communicating with guests. It’s great for when you don’t have everyone’s phone numbers or socials, like when you’re inviting friends-of-friends. You get a single link to share on any platform. Guests RSVP with their phone number, which lets them receive Text Blast updates from you as well as automatic reminders. Everyone who RSVPs can see who else is going (through a setting you control), increasing party attendance and building hype. Networky is also great for listed events (where you want to approve each guest), for parties when you need to ask questions of guests (e.g. dietary restrictions), and for when you need to collect money via Venmo or CashApp. Everyone can also share photos directly on the party page. Our mission is to help foster friendships through social events, so we also make it easy to connect with the people you’re meeting at parties. Add your socials and photo to your Networky profile so people can get in touch after each event."
+				},
+				{
+					"question": "What types of events does Networky support?",
+					"answer": "Anything from small dinner parties, to big weekend houseparties, to massive warehouse raves. Anytime you’re trying to coordinate with a group of people, Networky comes in handy. We support both regular RSVPs as well as listed events that require host approval of each guest."
+				},
+				{
+					"question": "Where do Networky events happen?",
+					"answer": "We have party people all over the world. Our company is HQ’ed in NYC, where we power thousands of parties every week. But anywhere parties happen, you can find Networky — throughout the U.S. and around the world. We support most international phone numbers, so whether you’re clubbing in Berlin, vibing in Sydney, raving in Rio, or celebrating in Seoul, Networky is there for you."
+				},
+				{
+					"question": "Do you ever spam my guests?",
+					"answer": "Definitely not. We only use guests' numbers to send the notifications mentioned <a href='https://partiful.com/faq/ig#guest-phone-nums' target='_blank' rel='noopener noreferrer' class='text-underline'>here</a> and <a href='https://partiful.com/faq/er' target='_blank' rel='noopener noreferrer' class='text-underline'>here.</a>‍ We will never send marketing texts or anything unrelated to your event.<br />Learn more about our event reminders <a href='https://partiful.com/faq/er' target='_blank' rel='noopener noreferrer' class='text-underline'>here</a>."
+				},
+				{
+					"question": "How do you make money?",
+					"answer": "We plan to offer party add-ons, starting with disposable cameras. Got ideas on products we should feature? <a href='https://partiful.com/contact' target='_blank' rel='noopener noreferrer' class='text-underline'>Let us know!</a> We will never sell your data to make money (or for any other reason)."
+				},
+				{
+					"question": "How do I change the phone number associated with my Networky account?",
+					"answer": "Please <a href='https://partiful.com/contact' target='_blank' rel='noopener noreferrer' class='text-underline'>contact us</a> if you need to change the number on your Networky account.<br /><br />If you have any further questions, <a href='https://www.instagram.com/partiful/' target='_blank' rel='noopener noreferrer' class='text-underline'>DM</a> or <a href='mailto:hello@networky.co' target='_blank' rel='noopener noreferrer' class='text-underline'>email</a> us!"
+				}
+			]
+		},
+		{
+			"name": "Inviting Guests",
+			"image": "/images/emoji/people.png",
+			"data": [
+				{
+					"question": "How do I invite guests to my event?",
+					"answer": "Hit the \"Share Invite\" button to share your event link on any platform: text, Instagram, Snapchat, Slack, WhatsApp, Messenger, email, and more. You can share it individually or in group DMs. Guests RSVP with their phone number, so you'll be able to text blast <a href='https://partiful.com/faq/ap#event-reminders' target='_blank' rel='noopener noreferrer' class='text-underline'>updates and reminders</a> directly to their phones.",
+					"images": [
+						"/images/faq/inviting_guests_1.png",
+						"/images/faq/inviting_guests_2.png"
+					]
+				},
+				{
+					"question": "How can guests change their RSVP?",
+					"answer": "After someone RSVPs, we text them a link that they can use to change their RSVP. They can also RSVP again using the original link you shared with them and the same phone number, and it will replace their previous RSVP. Guests currently can't change their RSVP for listed (\"Get on the list\") events.",
+					"images": ["/images/faq/inviting_guests_3.png"]
+				},
+				{
+					"question": "What are guest phone numbers used for?",
+					"answer": "<ol style='margin-left:16px;' class='decimal'><li>To make it easy for guests to change their RSVP or see event details by logging into Networky with their phone number</li><li>To send <a href='https://partiful.com/faq/er' target='_blank' rel='noopener noreferrer' class='text-underline'>automatic text reminders</a> for your event (you can turn these off if you want)</li><li>To allow you to easily communicate with guests by text blasting updates and reminders‍We don't send marketing texts or anything unrelated to your event.</li></ol>"
+				},
+				{
+					"question": "Can you track who I've invited?",
+					"answer": "No, but if someone RSVPs \"Maybe,\" we'll text them a reminder to finalize their RSVP."
+				},
+				{
+					"question": "How do I ask questions to my guests?",
+					"answer": "In settings, enable Guest Questionnaire to collect information from your attendees. You can click any guest profile to view their answers, or export all answers in Export Guest List."
+				},
+				{
+					"question": "Can I limit who gets on my guest list?",
+					"answer": "Yes! You can enable “Require Guest Approval” in settings to prompt guests to apply for your guest list. When managing guests, you’ll be able to set a guest’s status as Approved, Pending, or Remove."
+				},
+				{
+					"question": "How can I allow guests to see the location without having to RSVP first?",
+					"answer": "You can add the location to the event description, which is visible prior to RSVP."
+				},
+				{
+					"question": "If I remove some from my guest list, will they be notified and will they still be able to see the event and details?",
+					"answer": "If you remove someone from your guest list, they will not be notified. They won’t be able to see event details like location and who else is going. They would still be able to see everything that’s visible to non-RSVP’ed guests, such as event title, image, and description. If you’d like to prevent them from seeing these details, you can add a password to your event page (be sure to text blast existing guests so they know the password)."
+				}
+			]
+		},
+		{
+			"name": "Managing Event",
+			"image": "/images/emoji/calendar.png",
+			"data": [
+				{
+					"question": "How do I make changes to my event?",
+					"answer": "You can edit your event page at any time, even after sending invites. Just tap the \"Edit Invite\" button on your event page to edit event details, change your page design, or configure event settings.",
+					"images": ["/images/faq/managing_event_1.png"]
+				},
+				{
+					"question": "How can I limit group size?",
+					"answer": "Set a maximum capacity for the event and enable an automatic waitlist. If a spot opens up, we'll automatically add the next waitlisted guest and notify them via text.<br />You can also limit the number of +1 each guest is allowed to bring (under Settings).",
+					"images": ["/images/faq/managing_event_2.png"]
+				},
+				{
+					"question": "How do I add cohosts?",
+					"answer": "In Settings, you'll see an option to add a co-host.<br />Anyone you want to add as a co-host must first be a guest of the event (or a past event). If someone is new to Partiful, they will have to first RSVP to your event before you can add them."
+				},
+				{
+					"question": "Do I get notified when someone RSVPs?",
+					"answer": "Right now, we only text you the first time someone RSVPs. Soon, we'll have a way for you to subscribe to notifications every time someone RSVPs."
+				},
+				{
+					"question": "How can I export my guest list?",
+					"answer": "To download a CSV file of your guest list, go to your Guest List and tap the 3 dots in the top right corner. You'll see an option to Export Guest List. You can then choose which type(s) of RSVP you'd like to export."
+				}
+			]
+		},
+		{
+			"name": "Event Reminders",
+			"image": "/images/emoji/alarm.png",
+			"data": [
+				{
+					"question": "Do you send automatic event reminders?",
+					"answer": "Yes! For guests who RSVP \"Going\", we text reminders the day before the event and 2 hours before the event. If someone RSVPs \"Maybe,\" we'll remind them to finalize their RSVP leading up to the event — 2 weeks before, 1 week before, and 1 day before the event.You can toggle reminders on/off by going to your event page, tapping \"Edit Invite,\" then going to \"Settings\":",
+					"images": ["/images/faq/event_reminders_1.png"]
+				},
+				{
+					"question": "Can I send my own reminders?",
+					"answer": "Yes! Hit \"Text Blast\" → \"New Message\" to send a text to groups of guests. You can also send a photo along with your message.",
+					"images": ["/images/faq/event_reminders_2.png"]
+				},
+				{
+					"question": "I’m not getting Partiful texts anymore, how do I reenable them?",
+					"answer": "You may have unsubscribed from Partiful texts. Text START to 855-607-1245 to start receiving texts again (only works for US numbers).If that didn't work, you might have accidentally blocked the Partiful number! Here’s how to re-enable it:On iPhone: Go to the Settings app and select Messages. Under SMS/MMS, select Blocked, and then select Edit in the top right corner. Click the (-) sign beside our number (855-607-1245) and choose Unblocked.On Android: Go to the Phone app and select More. Under Settings, select Blocked Numbers, and then tap the (X) sign beside our number (855-607-1245) to unblock."
+				}
+			]
+		},
+		{
+			"name": "Collect Money",
+			"image": "/images/emoji/money_bag.png",
+			"data": []
+		}
+	]
+}
